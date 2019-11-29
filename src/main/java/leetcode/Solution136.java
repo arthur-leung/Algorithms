@@ -1,4 +1,4 @@
-package com.arthur;
+package leetcode;
 
 import java.util.ArrayList;
 import java.util.HashMap;

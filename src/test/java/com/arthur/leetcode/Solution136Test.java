@@ -1,5 +1,6 @@
-package com.arthur;
+package com.arthur.leetcode;
 
+import leetcode.Solution136;
 import org.junit.Assert;
 import org.junit.Test;
 
