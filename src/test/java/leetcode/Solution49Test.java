@@ -1,4 +1,4 @@
-package com.arthur.leetcode;
+package leetcode;
 
 import leetcode.Solution49;
 import org.junit.Test;
