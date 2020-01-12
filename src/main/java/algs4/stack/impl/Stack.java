@@ -1,8 +1,10 @@
-package algs4.stack;
+package algs4.stack.impl;
+
+import algs4.stack.Stack;
 
 import java.util.Iterator;
 
-public class LinkedListStack<Item> implements Stack<Item>, Iterable<Item> {
+public class Stack<Item> implements algs4.stack.Stack<Item>, Iterable<Item> {
     private Node head;
     private int size;
 
