@@ -1,35 +1,25 @@
-package algs4.stack.impl;
+package algs4.bag.impl;
 
-import algs4.stack.IStack;
+import algs4.bag.IBag;
 
 import java.util.Iterator;
 
-public class Stack<Item> implements IStack<Item>, Iterable<Item> {
+public class Bag<Item> implements IBag<Item>, Iterable<Item> {
     private Node head;
     private int size;
 
     private class Node {
-        Item item;
-        Node next;
+        private Item item;
+        private Node next;
     }
 
     @Override
-    public void push(Item item) {
+    public void add(Item item) {
         Node oldHead = head;
         head = new Node();
         head.item = item;
         head.next = oldHead;
-    }
-
-    @Override
-    public Item pop() {
-        if (head == null) {
-            throw new NullPointerException();
-        }
-        Item item = head.item;
-        size--;
-        head = head.next;
-        return item;
+        size++;
     }
 
     @Override

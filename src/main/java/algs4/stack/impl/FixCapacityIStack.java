@@ -1,15 +1,15 @@
 package algs4.stack.impl;
 
-import algs4.stack.Stack;
+import algs4.stack.IStack;
 import org.omg.CORBA.Object;
 
 import java.util.Iterator;
 
-public class FixCapacityStack<Item> implements Stack<Item>, Iterable<Item> {
+public class FixCapacityIStack<Item> implements IStack<Item>, Iterable<Item> {
     private Item[] entry;
     private int index = 0;
 
-    public FixCapacityStack(int capacity) {
+    public FixCapacityIStack(int capacity) {
         entry = (Item[]) new Object[capacity];
     }
 

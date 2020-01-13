@@ -1,6 +1,6 @@
 package algs4.bag;
 
-public interface Bag<Item> {
+public interface IBag<Item> {
     void add(Item item);
 
     boolean isEmpty();

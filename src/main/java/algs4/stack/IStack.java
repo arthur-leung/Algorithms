@@ -1,6 +1,6 @@
 package algs4.stack;
 
-public interface Stack<Item> {
+public interface IStack<Item> {
     void push(Item item);
 
     Item pop();

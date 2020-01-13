@@ -1,28 +1,28 @@
 package algs4.stack.impl;
 
-import algs4.stack.Stack;
+import algs4.stack.IStack;
 import org.omg.CORBA.Object;
 
 import java.util.Iterator;
 
-public class ResizingArrayStack<Item> implements Stack<Item>, Iterable<Item> {
-    private Item[] entry;
+public class ResizingArrayIStack<Item> implements IStack<Item>, Iterable<Item> {
+    private Item[] items =  (Item[]) new Object[1];
     private int index;
 
     @Override
     public void push(Item item) {
-        if (index == entry.length) {
-            resize(entry.length * 2);
+        if (index == items.length) {
+            resize(items.length * 2);
         }
-        entry[index++] = item;
+        items[index++] = item;
     }
 
     @Override
     public Item pop() {
-        Item item = entry[index--];
-        entry[index] = null;
-        if (index > 0 && index == entry.length / 4) {
-            resize(entry.length / 2);
+        Item item = items[index--];
+        items[index] = null;
+        if (index > 0 && index == items.length / 4) {
+            resize(items.length / 2);
         }
         return item;
     }
@@ -39,10 +39,10 @@ public class ResizingArrayStack<Item> implements Stack<Item>, Iterable<Item> {
 
     public void resize(int capacity) {
         Item[] temp = (Item[]) new Object[capacity];
-        for (int i = 0; i < entry.length; i++) {
-            temp[i] = entry[i];
+        for (int i = 0; i < this.items.length; i++) {
+            temp[i] = this.items[i];
         }
-        entry = temp;
+        items = temp;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ResizingArrayStack<Item> implements Stack<Item>, Iterable<Item> {
 
         @Override
         public Item next() {
-            return entry[--i];
+            return ResizingArrayIStack.this.items[--i];
         }
 
         @Override

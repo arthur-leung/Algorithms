@@ -1,11 +1,12 @@
-package algs4.stack.impl;
+package algs4.queue.impl;
 
-import algs4.stack.IStack;
+import algs4.queue.IQueue;
 
 import java.util.Iterator;
 
-public class Stack<Item> implements IStack<Item>, Iterable<Item> {
+public class Queue<Item> implements IQueue<Item>, Iterable<Item> {
     private Node head;
+    private Node tail;
     private int size;
 
     private class Node {
@@ -14,27 +15,36 @@ public class Stack<Item> implements IStack<Item>, Iterable<Item> {
     }
 
     @Override
-    public void push(Item item) {
-        Node oldHead = head;
-        head = new Node();
-        head.item = item;
-        head.next = oldHead;
+    public void enqueue(Item item) {
+        Node oldTail = tail;
+        tail = new Node();
+        tail.item = item;
+        tail.next = null;
+        if (isEmpty()) {
+            head = tail;
+        } else {
+            oldTail.next = tail;
+        }
+        size++;
     }
 
     @Override
-    public Item pop() {
+    public Item dequeue() {
         if (head == null) {
             throw new NullPointerException();
         }
         Item item = head.item;
-        size--;
         head = head.next;
+        if (isEmpty()) {
+            tail = null;
+        }
+        size--;
         return item;
     }
 
     @Override
     public boolean isEmpty() {
-        return head == null;
+        return size == 0;
     }
 
     @Override
